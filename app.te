@@ -215,7 +215,8 @@ selinux_check_context(appdomain)
 
 # Superuser capabilities.
 # bluetooth requires net_admin and wake_alarm.
-neverallow { appdomain -bluetooth } self:capability *;
+# Allow net_admin, net_bind_service and net_raw for DHCP server use.
+neverallow { appdomain -bluetooth } self:capability ~{sys_nice net_admin net_bind_service net_raw};
 neverallow { appdomain -bluetooth } self:capability2 *;
 
 # Block device access.
