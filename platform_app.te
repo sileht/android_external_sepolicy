@@ -37,6 +37,8 @@ allow platform_app vfat:file create_file_perms;
 # Permissions required for the DHCP server
 allow platform_app self:capability { net_admin net_raw net_bind_service };
 allow platform_app self:netlink_route_socket nlmsg_write;
+allow platform_app net_data_file:file r_file_perms;
+allow platform_app net_data_file:dir r_dir_perms;
 
 allow platform_app drmserver_service:service_manager find;
 allow platform_app mediaserver_service:service_manager find;
